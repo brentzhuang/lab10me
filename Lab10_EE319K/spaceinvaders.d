@@ -10,3 +10,6 @@
 .\spaceinvaders.o: Timer0.h
 .\spaceinvaders.o: Timer1.h
 .\spaceinvaders.o: DAC.h
+.\spaceinvaders.o: Game.h
+.\spaceinvaders.o: SysTick.h
+.\spaceinvaders.o: Button.h

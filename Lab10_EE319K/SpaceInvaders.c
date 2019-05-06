@@ -60,31 +60,13 @@
 #include "Timer0.h"
 #include "Timer1.h"
 #include "DAC.h"
+#include "Game.h"
+#include "SysTick.h"
+#include "Button.h"
 
 void DisableInterrupts(void); // Disable interrupts
 void EnableInterrupts(void);  // Enable interrupts
 void Delay100ms(uint32_t count); // time delay in 0.1 seconds
-
-struct enemy{
-	unsigned long enemyX;
-	unsigned long enemyY;
-	const unsigned short *image;
-	long life;	// 0 means dead 1 means alive
-};
-
-typedef struct enemy enemy_t;
-enemy_t Enemy[5];
-
-struct player{
-	uint16_t playerX;
-	uint16_t playerY;
-	uint8_t lives;
-	uint8_t dead;
-	const unsigned short *image;
-};
-
-typedef struct player player_t;
-player_t Player;
 
 void Init(void){			//initializing enemy's position
 	
@@ -104,34 +86,6 @@ void Init(void){			//initializing enemy's position
 
 int flag = 0; 
 
-void SysTick_Init(){
-	NVIC_ST_CTRL_R = 0;                   // disable SysTick during setup
-  NVIC_ST_RELOAD_R = 2666666;  // maximum reload value
-	NVIC_ST_CURRENT_R = 0; 	
-	NVIC_ST_CTRL_R |= 0x7;
-	EnableInterrupts();
-}
-
-void movePlayerLeft(){
-	Player.playerX -= 2;
-}
-
-void movePlayerRight(){
-	Player.playerX += 2;
-}
-
-void SysTick_Handler(){
-	uint32_t ADCdata = ADC_In();
-	if(ADCdata <= 1365)
-		movePlayerLeft();
-	else if((ADCdata > 1365) && (ADCdata <=2730)){
-		
-	}
-	
-	else if(ADCdata > 2730){
-		movePlayerRight();
-	}
-}
 
 void Move(void){
 
@@ -181,20 +135,19 @@ int main(void){
 	SysTick_Init();
 	Sound_Init();
   Output_Init();
+	Button_Init();
+	EnableInterrupts();
+	
   ST7735_FillScreen(0x0000);            // set screen to black
 	Init();
 	Draw();
 	while(1){
-
-		
-	Move();
+		Move();
 		Draw();
-			Delay100ms(2);
-		
+		Delay100ms(2);
 	}
 }
   /*
-	
   ST7735_DrawBitmap(52, 159, ns, 18,8); // player ship middle bottom
   ST7735_DrawBitmap(53, 151, Bunker0, 18,5);
 
@@ -226,15 +179,3 @@ int main(void){
 // You can't use this timer, it is here for starter code only 
 // you must use interrupts to perform delays
 */
-
-
-
-
-
-// You can't use this timer, it is here for starter code only 
-// you must use interrupts to perform delays
-
-
-	
-
-

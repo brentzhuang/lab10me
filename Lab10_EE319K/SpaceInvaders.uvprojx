@@ -447,6 +447,31 @@
               <FileType>1</FileType>
               <FilePath>.\Game.c</FilePath>
             </File>
+            <File>
+              <FileName>Game.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Game.h</FilePath>
+            </File>
+            <File>
+              <FileName>SysTick.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\SysTick.h</FilePath>
+            </File>
+            <File>
+              <FileName>SysTick.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\SysTick.c</FilePath>
+            </File>
+            <File>
+              <FileName>Button.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Button.c</FilePath>
+            </File>
+            <File>
+              <FileName>Button.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Button.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
