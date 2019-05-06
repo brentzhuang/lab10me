@@ -7,6 +7,7 @@
 #include <stdint.h>
 #include "Sound.h"
 #include "DAC.h"
+#include "Timer0.h"
 
 const uint8_t shoot[4080] = {
   129, 99, 103, 164, 214, 129, 31, 105, 204, 118, 55, 92, 140, 225, 152, 61, 84, 154, 184, 101, 
@@ -1137,20 +1138,45 @@ const uint8_t highpitch[1802] = {
   67, 119, 148, 166, 164, 238, 223, 202, 174, 112, 96, 78, 0, 34, 54, 99, 143, 160, 166, 183, 
   250, 207};
 
+const unsigned char *current;			// pointer to array that nees to be played
+unsigned long Index;							// gives the current index in the array that needs to be output
+unsigned long soundLength;				// gives the length of a sound
+int soundFlag;								// flag used to determine if a sound needs to be played
+
+void SoundPlayer(void){
+  if((soundLength > Index) && soundFlag){		// checks if sound has finished and if sound should be playing
+    DAC_Out(current[Index]);								// output values on DAC
+    Index++;																// increment index in sound array
+  }
+	else{
+		DAC_Out(0);															// nullify DAC output
+		soundFlag = 0;													// set soundFlag to false
+		soundLength = 0;												// soundLength reset
+		Index = 0;															// Index is reset
+  }
+}	
+	
 void Sound_Init(void){
-// write this
+	DAC_Init();
+	soundFlag = 0;
+	soundLength = 0;
+	Index = 0;
+	Timer0_Init(SoundPlayer, 80000000/11025);
 };
 void Sound_Play(const uint8_t *pt, uint32_t count){
-// write this
+	current = pt;
+	soundLength = count;
+	soundFlag = 1;
+	Index = 0;
 };
 void Sound_Shoot(void){
-// write this
+	Sound_Play(shoot, 4080);
 };
 void Sound_Killed(void){
-// write this
+	
 };
 void Sound_Explosion(void){
-// write this
+	Sound_Play(explosion, 2000);
 };
 
 void Sound_Fastinvader1(void){

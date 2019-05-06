@@ -442,6 +442,11 @@
               <FileType>1</FileType>
               <FilePath>.\PLL.c</FilePath>
             </File>
+            <File>
+              <FileName>Game.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Game.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

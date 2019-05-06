@@ -65,14 +65,15 @@ void DisableInterrupts(void); // Disable interrupts
 void EnableInterrupts(void);  // Enable interrupts
 void Delay100ms(uint32_t count); // time delay in 0.1 seconds
 
-struct State{
-	unsigned long x;
-	unsigned long y;
+struct enemy{
+	unsigned long enemyX;
+	unsigned long enemyY;
 	const unsigned short *image;
 	long life;	// 0 means dead 1 means alive
 };
-typedef struct State STyp;
-STyp Enemy[5];
+
+typedef struct enemy enemy_t;
+enemy_t Enemy[5];
 
 struct player{
 	uint16_t playerX;
@@ -82,14 +83,14 @@ struct player{
 	const unsigned short *image;
 };
 
-
 typedef struct player player_t;
 player_t Player;
+
 void Init(void){			//initializing enemy's position
 	
  for(int i = 0; i<5; i++){
-		Enemy[i].x = 20*i;
-		Enemy[i].y = 10;
+		Enemy[i].enemyX = 20*i;
+		Enemy[i].enemyY = 10;
 		Enemy[i].image = SmallEnemy20pointA;
 		Enemy[i].life = 1;
  }
@@ -105,10 +106,10 @@ int flag = 0;
 
 void SysTick_Init(){
 	NVIC_ST_CTRL_R = 0;                   // disable SysTick during setup
-  NVIC_ST_RELOAD_R = 800000;  // maximum reload value
-	NVIC_ST_CURRENT_R = 0; 
-	
+  NVIC_ST_RELOAD_R = 2666666;  // maximum reload value
+	NVIC_ST_CURRENT_R = 0; 	
 	NVIC_ST_CTRL_R |= 0x7;
+	EnableInterrupts();
 }
 
 void movePlayerLeft(){
@@ -135,8 +136,8 @@ void SysTick_Handler(){
 void Move(void){
 
 	for(int j = 0; j<5; j++){
-		if(Enemy[j].x <= 110){
-			Enemy[j].x += 2;
+		if(Enemy[j].enemyX <= 110){
+			Enemy[j].enemyX += 2;
 		}
 
 		
@@ -157,7 +158,7 @@ int i;
 	ST7735_FillScreen(0x0000);
 	for(i=0;i<5;i++){
 		if(Enemy[i].life>0){
-		ST7735_DrawBitmap(Enemy[i].x,Enemy[i].y,Enemy[i].image,16,10);
+		ST7735_DrawBitmap(Enemy[i].enemyX,Enemy[i].enemyY,Enemy[i].image,16,10);
 		}
 	}
 }
@@ -178,7 +179,7 @@ int main(void){
   Random_Init(1);
 	ADC_Init();
 	SysTick_Init();
-	DAC_Init();
+	Sound_Init();
   Output_Init();
   ST7735_FillScreen(0x0000);            // set screen to black
 	Init();
