@@ -1,3 +1,9 @@
-
+void SpaceInvaders_Init(void);
 void movePlayerLeft(void);
 void movePlayerRight(void);
+void DrawScreen(void);
+void noMove(void);
+void enemyMove(void);
+uint16_t getPlayerX(void);
+void setFlag(void);
+uint8_t getFlag(void);

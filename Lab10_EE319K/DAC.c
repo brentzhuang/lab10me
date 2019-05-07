@@ -6,10 +6,11 @@
 // Initialize 4-bit DAC, called once 
 // Input: none
 // Output: none
-volatile int delay;
+
 
 void DAC_Init(void){
 //Initialize DAC outputs to PB0-3
+	volatile int delay;
 	SYSCTL_RCGCGPIO_R |= 0x02;
 	delay++;
 	GPIO_PORTB_DIR_R |= 0xF;

@@ -3,3 +3,7 @@
 .\game.o: ../inc/tm4c123gh6pm.h
 .\game.o: Sound.h
 .\game.o: ADC.h
+.\game.o: ST7735.h
+.\game.o: Images.h
+.\game.o: Timer0.h
+.\game.o: Timer1.h

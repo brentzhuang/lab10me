@@ -1,7 +1,7 @@
 #include "../inc/tm4c123gh6pm.h"
 #include <stdint.h>
-volatile int delay;
 void Button_Init(){
+	volatile int delay;
 	SYSCTL_RCGCGPIO_R |= 0x10;
 	delay++;
 	GPIO_PORTE_DIR_R &= 0x0;

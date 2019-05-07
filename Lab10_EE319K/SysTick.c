@@ -7,7 +7,7 @@
 
 void SysTick_Init(){
 	NVIC_ST_CTRL_R = 0;                   // disable SysTick during setup
-  NVIC_ST_RELOAD_R = 2666666;  // maximum reload value
+  NVIC_ST_RELOAD_R = 800000;  // maximum reload value
 	NVIC_ST_CURRENT_R = 0; 	
 	NVIC_ST_CTRL_R |= 0x7;
 }
@@ -15,20 +15,21 @@ uint32_t button;
 uint32_t ADCdata;
 void SysTick_Handler(){
 	
-	button = Button_Data();
+	//button = Button_Data();
 	
 	
 	
 	
 	ADCdata = ADC_In();
-	if(ADCdata <= 1365)
+	if(ADCdata <= 1365 && getPlayerX() > 1)
 		movePlayerLeft();
 	
 	else if((ADCdata > 1365) && (ADCdata <=2730)){
-		
+		noMove();
 	}
 	
-	else if(ADCdata > 2730){
+	
+	else if(ADCdata > 2730 && getPlayerX() < 111){
 		movePlayerRight();
 	}
 }

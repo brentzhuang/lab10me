@@ -55,7 +55,6 @@
 #include "Random.h"
 #include "PLL.h"
 #include "ADC.h"
-#include "Images.h"
 #include "Sound.h"
 #include "Timer0.h"
 #include "Timer1.h"
@@ -66,87 +65,25 @@
 
 void DisableInterrupts(void); // Disable interrupts
 void EnableInterrupts(void);  // Enable interrupts
-void Delay100ms(uint32_t count); // time delay in 0.1 seconds
-
-void Init(void){			//initializing enemy's position
-	
- for(int i = 0; i<5; i++){
-		Enemy[i].enemyX = 20*i;
-		Enemy[i].enemyY = 10;
-		Enemy[i].image = SmallEnemy20pointA;
-		Enemy[i].life = 1;
- }
-	
- Player.playerX = 64;
- Player.playerY = 145;
- Player.lives = 3;
- Player.dead = 0;
- Player.image = PlayerShip0;
-}
-
-int flag = 0; 
-
-
-void Move(void){
-
-	for(int j = 0; j<5; j++){
-		if(Enemy[j].enemyX <= 110){
-			Enemy[j].enemyX += 2;
-		}
-
-		
-		
-
-	}
-}
-	//else{
-	//Enemy[j].life = 0;
-	//}
-//void MoveBack(void){
-
-//}
-
-	
-void Draw(void){	//called inside main loop 30Hz
-int i;
-	ST7735_FillScreen(0x0000);
-	for(i=0;i<5;i++){
-		if(Enemy[i].life>0){
-		ST7735_DrawBitmap(Enemy[i].enemyX,Enemy[i].enemyY,Enemy[i].image,16,10);
-		}
-	}
-}
-
-void Delay100ms(uint32_t count){uint32_t volatile time;
-  while(count>0){
-    time = 727240;  // 0.1sec at 80 MHz
-    while(time){
-	  	time--;
-    }
-    count--;
-  }
-}
-
 
 int main(void){
+
   PLL_Init(Bus80MHz);       // Bus clock is 80 MHz 
-  Random_Init(1);
+  //Random_Init(1);
 	ADC_Init();
 	SysTick_Init();
 	Sound_Init();
   Output_Init();
-	Button_Init();
+	//Button_Init();
+	SpaceInvaders_Init();	
 	EnableInterrupts();
-	
-  ST7735_FillScreen(0x0000);            // set screen to black
-	Init();
-	Draw();
+	extern uint8_t flag;
 	while(1){
-		Move();
-		Draw();
-		Delay100ms(2);
+		enemyMove();
+		DrawScreen();
 	}
 }
+
   /*
   ST7735_DrawBitmap(52, 159, ns, 18,8); // player ship middle bottom
   ST7735_DrawBitmap(53, 151, Bunker0, 18,5);

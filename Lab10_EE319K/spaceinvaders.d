@@ -5,7 +5,6 @@
 .\spaceinvaders.o: Random.h
 .\spaceinvaders.o: PLL.h
 .\spaceinvaders.o: ADC.h
-.\spaceinvaders.o: Images.h
 .\spaceinvaders.o: Sound.h
 .\spaceinvaders.o: Timer0.h
 .\spaceinvaders.o: Timer1.h
