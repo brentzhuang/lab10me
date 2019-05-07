@@ -8,13 +8,16 @@
 #include "Timer0.h"
 #include "Timer1.h"
 
-char score[6] = {'S', 'c', 'o', 'r', 'e', ':'};
+char score[8] = {'H', 'e', 'a', 'l', 't', 'h', ':', 0};
+char win[9] = {'Y', 'o', 'u', ' ', 'w', 'i', 'n', '!', 0};
+char lose[10] = {'Y', 'o', 'u', ' ', 'l', 'o', 's', 'e', '!', 0};
+char hp[4] = {'H', 'p', ':', 0};
 
 struct enemy{
 	uint16_t X;
 	uint16_t Y;
 	const unsigned short *image;
-	uint16_t hp;
+	uint32_t hp;
 	long dead;	// 1 means dead 0 means alive
 };
 
@@ -24,7 +27,7 @@ enemy_t Enemy;
 struct player{
 	uint16_t X;
 	uint16_t Y;
-	uint8_t lives;
+	uint32_t lives;
 	uint8_t dead;
 	const unsigned short *image;
 };
@@ -39,17 +42,8 @@ struct laser{
 	uint8_t exist;
 };
 
-void Delay100ms(uint32_t count); // time delay in 0.1 seconds
-
-void Delay100ms(uint32_t count){uint32_t volatile time;
-  while(count>0){
-    time = 727240;  // 0.1sec at 80 MHz
-    while(time){
-	  	time--;
-    }
-    count--;
-  }
-}
+typedef struct laser laser_t;
+laser_t Laser;
 
 void movePlayerLeft(){
 	Player.X -= 2;
@@ -62,12 +56,72 @@ void movePlayerRight(){
 void noMove(){
 	Player.X = Player.X;
 }
-void playerShoot(){
+
+void laserInit(){
+		Laser.X = Player.X +8;
+		Laser.Y = Player.Y;
+		Laser.image = PlayerLaser;
+		Laser.exist = 1;
+		Sound_Shoot();
+}
+
+uint8_t getLaser(){
+	return Laser.exist;
+}
+
+uint16_t getLaserY(){
+	return Laser.Y;
+}
+
+uint16_t getLaserX(){
+	return Laser.X;
+}
+
+uint16_t getEnemyX(){
+	return Enemy.X;
+}
+
+uint16_t getEnemyY(){
+	return Enemy.Y;
+}
+
+void Hit(){
+	Enemy.hp--;
+	Laser.exist = 0;
 	
 }
+
+void moveLaser(){
+	Laser.Y--;
+	if(Laser.Y == 2){
+		Laser.exist = 0;
+	}
+}
+
+void hitDetect(uint16_t EnemyX, uint16_t EnemyY, uint8_t EnemyW, uint8_t EnemyH, uint16_t LaserX, uint16_t LaserY, uint8_t LaserW, uint8_t LaserH){
+	if(getLaser() == 1){
+		for(uint8_t i = LaserX; i<=(LaserX+LaserW); i++){
+			if((i>=EnemyX)&&(i<=(EnemyX+EnemyW))){
+				for(uint8_t j = LaserY; j>=(LaserY-LaserH); j++){
+					if((EnemyY>=j)&&((EnemyY-EnemyH))){
+						while(Laser.exist == 1){
+							Hit();
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+void drawLaser(){
+	if(Laser.exist == 1){
+		ST7735_DrawBitmap(Laser.X, Laser.Y, PlayerLaser, 2, 10);
+	}
+}
+
 int count=0;
 void enemyMove(){
-//	if(getFlag()	==1){
 		count++;
 		if(Enemy.X < 125 && (count%10 == 0))
 			Enemy.X += 1;
@@ -82,9 +136,40 @@ void enemyMove(){
 			Enemy.Y = 20;
 			
 		}
-//	}
 }
 
+void Win(){
+	while(1){
+	ST7735_FillScreen(0x0000);
+	ST7735_SetCursor(0, 0);
+	ST7735_OutString(win);
+	}
+}
+
+void Lose(){
+	ST7735_FillScreen(0x0000);
+	ST7735_SetCursor(0, 0);
+	ST7735_OutString(lose);
+	while(1){
+		
+	}
+}
+
+void checkEnd(){
+	if (Player.lives < 1){
+		Lose();
+	}
+	if ((Enemy.hp <= 900) && (Enemy.hp > 100))
+		Win();
+}
+
+
+void drawScore(){
+	ST7735_SetCursor(17, 15);
+	ST7735_OutUDec(Enemy.hp);
+	ST7735_SetCursor(6, 15);
+	ST7735_OutUDec(Player.lives);
+}
 
 uint16_t getPlayerX(){
 	return Player.X;
@@ -103,10 +188,14 @@ void SpaceInvaders_Init(){
 	Player.lives = 3;
 	Player.dead = 0;
 	Enemy.dead = 0;
+	Laser.exist = 0;
 	ST7735_DrawBitmap(Enemy.X, Enemy.Y, Enemy.image, 16, 10);
 	ST7735_DrawBitmap(Player.X, Player.Y, Player.image, 18, 8);
-	ST7735_SetCursor(12, 15);
+	ST7735_SetCursor(9, 15);
 	ST7735_OutString(score);
+	ST7735_SetCursor(5, 15);
+	ST7735_OutString(hp);
+	
 //	Timer1_Init(setFlag, 80000000/2); //
 }
 

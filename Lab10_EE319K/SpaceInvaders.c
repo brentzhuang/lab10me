@@ -71,48 +71,18 @@ int main(void){
   PLL_Init(Bus80MHz);       // Bus clock is 80 MHz 
   //Random_Init(1);
 	ADC_Init();
-	SysTick_Init();
+	Button_Init();	
 	Sound_Init();
-  Output_Init();
-	//Button_Init();
-	SpaceInvaders_Init();	
+  Output_Init();	
+	SpaceInvaders_Init();
+	SysTick_Init();
 	EnableInterrupts();
-	extern uint8_t flag;
 	while(1){
 		enemyMove();
 		DrawScreen();
+		drawLaser();
+		hitDetect(getEnemyX(), getEnemyY(), 16, 10, getLaserX(), getLaserY(), 2, 10);
+		drawScore();
+		checkEnd();
 	}
 }
-
-  /*
-  ST7735_DrawBitmap(52, 159, ns, 18,8); // player ship middle bottom
-  ST7735_DrawBitmap(53, 151, Bunker0, 18,5);
-
-  ST7735_DrawBitmap(0, 9, SmallEnemy10pointA, 16,10);
-  ST7735_DrawBitmap(20,9, SmallEnemy10pointB, 16,10);
-  ST7735_DrawBitmap(40, 9, SmallEnemy20pointA, 16,10);
-  ST7735_DrawBitmap(60, 9, SmallEnemy20pointB, 16,10);
-  ST7735_DrawBitmap(80, 9, SmallEnemy30pointA, 16,10);
-  ST7735_DrawBitmap(100, 9, SmallEnemy30pointB, 16,10);
-
-  Delay100ms(50);              // delay 5 sec at 80 MHz
-
-  ST7735_FillScreen(0x0000);            // set screen to black
-  ST7735_SetCursor(1, 1);
-  ST7735_OutString("GAME OVER");
-  ST7735_SetCursor(1, 2);
-  ST7735_OutString("Nice try,");
-  ST7735_SetCursor(1, 3);
-  ST7735_OutString("Earthling!");
-  ST7735_SetCursor(2, 4);
-  LCD_OutDec(1234);
-  while(1){
-  }
-
-}
-
-
-
-// You can't use this timer, it is here for starter code only 
-// you must use interrupts to perform delays
-*/

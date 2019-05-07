@@ -35,13 +35,22 @@ Section Cross References
     print.o(.text) refers to st7735.o(i.ST7735_OutChar) for ST7735_OutChar
     spaceinvaders.o(i.main) refers to pll.o(i.PLL_Init) for PLL_Init
     spaceinvaders.o(i.main) refers to adc.o(i.ADC_Init) for ADC_Init
-    spaceinvaders.o(i.main) refers to systick.o(i.SysTick_Init) for SysTick_Init
+    spaceinvaders.o(i.main) refers to button.o(i.Button_Init) for Button_Init
     spaceinvaders.o(i.main) refers to sound.o(i.Sound_Init) for Sound_Init
     spaceinvaders.o(i.main) refers to st7735.o(i.Output_Init) for Output_Init
     spaceinvaders.o(i.main) refers to game.o(i.SpaceInvaders_Init) for SpaceInvaders_Init
+    spaceinvaders.o(i.main) refers to systick.o(i.SysTick_Init) for SysTick_Init
     spaceinvaders.o(i.main) refers to startup.o(.text) for EnableInterrupts
     spaceinvaders.o(i.main) refers to game.o(i.enemyMove) for enemyMove
     spaceinvaders.o(i.main) refers to game.o(i.DrawScreen) for DrawScreen
+    spaceinvaders.o(i.main) refers to game.o(i.drawLaser) for drawLaser
+    spaceinvaders.o(i.main) refers to game.o(i.getLaserY) for getLaserY
+    spaceinvaders.o(i.main) refers to game.o(i.getLaserX) for getLaserX
+    spaceinvaders.o(i.main) refers to game.o(i.getEnemyY) for getEnemyY
+    spaceinvaders.o(i.main) refers to game.o(i.getEnemyX) for getEnemyX
+    spaceinvaders.o(i.main) refers to game.o(i.hitDetect) for hitDetect
+    spaceinvaders.o(i.main) refers to game.o(i.drawScore) for drawScore
+    spaceinvaders.o(i.main) refers to game.o(i.checkEnd) for checkEnd
     st7735.o(i.Output_Clear) refers to st7735.o(i.ST7735_FillScreen) for ST7735_FillScreen
     st7735.o(i.Output_Color) refers to st7735.o(i.ST7735_SetTextColor) for ST7735_SetTextColor
     st7735.o(i.Output_Init) refers to st7735.o(i.ST7735_InitR) for ST7735_InitR
@@ -132,6 +141,11 @@ Section Cross References
     game.o(i.DrawScreen) refers to st7735.o(i.ST7735_DrawBitmap) for ST7735_DrawBitmap
     game.o(i.DrawScreen) refers to st7735.o(i.ST7735_FillRect) for ST7735_FillRect
     game.o(i.DrawScreen) refers to game.o(.bss) for Enemy
+    game.o(i.Hit) refers to game.o(.bss) for Enemy
+    game.o(i.Lose) refers to st7735.o(i.ST7735_FillScreen) for ST7735_FillScreen
+    game.o(i.Lose) refers to st7735.o(i.ST7735_SetCursor) for ST7735_SetCursor
+    game.o(i.Lose) refers to st7735.o(i.ST7735_OutString) for ST7735_OutString
+    game.o(i.Lose) refers to game.o(.data) for lose
     game.o(i.SpaceInvaders_Init) refers to st7735.o(i.ST7735_FillScreen) for ST7735_FillScreen
     game.o(i.SpaceInvaders_Init) refers to st7735.o(i.ST7735_DrawBitmap) for ST7735_DrawBitmap
     game.o(i.SpaceInvaders_Init) refers to st7735.o(i.ST7735_SetCursor) for ST7735_SetCursor
@@ -139,18 +153,47 @@ Section Cross References
     game.o(i.SpaceInvaders_Init) refers to game.o(.bss) for Player
     game.o(i.SpaceInvaders_Init) refers to game.o(.constdata) for PlayerShip0
     game.o(i.SpaceInvaders_Init) refers to game.o(.data) for score
+    game.o(i.Win) refers to st7735.o(i.ST7735_FillScreen) for ST7735_FillScreen
+    game.o(i.Win) refers to st7735.o(i.ST7735_SetCursor) for ST7735_SetCursor
+    game.o(i.Win) refers to st7735.o(i.ST7735_OutString) for ST7735_OutString
+    game.o(i.Win) refers to game.o(.data) for win
+    game.o(i.checkEnd) refers to game.o(i.Lose) for Lose
+    game.o(i.checkEnd) refers to game.o(i.Win) for Win
+    game.o(i.checkEnd) refers to game.o(.bss) for Player
+    game.o(i.drawLaser) refers to st7735.o(i.ST7735_DrawBitmap) for ST7735_DrawBitmap
+    game.o(i.drawLaser) refers to game.o(.bss) for Laser
+    game.o(i.drawLaser) refers to game.o(.constdata) for PlayerLaser
+    game.o(i.drawScore) refers to st7735.o(i.ST7735_SetCursor) for ST7735_SetCursor
+    game.o(i.drawScore) refers to st7735.o(i.ST7735_OutUDec) for ST7735_OutUDec
+    game.o(i.drawScore) refers to game.o(.bss) for Enemy
     game.o(i.enemyMove) refers to game.o(.data) for count
     game.o(i.enemyMove) refers to game.o(.bss) for Enemy
+    game.o(i.getEnemyX) refers to game.o(.bss) for Enemy
+    game.o(i.getEnemyY) refers to game.o(.bss) for Enemy
+    game.o(i.getLaser) refers to game.o(.bss) for Laser
+    game.o(i.getLaserX) refers to game.o(.bss) for Laser
+    game.o(i.getLaserY) refers to game.o(.bss) for Laser
     game.o(i.getPlayerX) refers to game.o(.bss) for Player
+    game.o(i.hitDetect) refers to game.o(i.getLaser) for getLaser
+    game.o(i.hitDetect) refers to game.o(i.Hit) for Hit
+    game.o(i.hitDetect) refers to game.o(.bss) for Laser
+    game.o(i.laserInit) refers to sound.o(i.Sound_Shoot) for Sound_Shoot
+    game.o(i.laserInit) refers to game.o(.bss) for Player
+    game.o(i.laserInit) refers to game.o(.constdata) for PlayerLaser
+    game.o(i.moveLaser) refers to game.o(.bss) for Laser
     game.o(i.movePlayerLeft) refers to game.o(.bss) for Player
     game.o(i.movePlayerRight) refers to game.o(.bss) for Player
     game.o(i.noMove) refers to game.o(.bss) for Player
+    systick.o(i.SysTick_Handler) refers to button.o(i.Button_Data) for Button_Data
+    systick.o(i.SysTick_Handler) refers to game.o(i.getLaser) for getLaser
+    systick.o(i.SysTick_Handler) refers to game.o(i.laserInit) for laserInit
+    systick.o(i.SysTick_Handler) refers to game.o(i.moveLaser) for moveLaser
     systick.o(i.SysTick_Handler) refers to adc.o(i.ADC_In) for ADC_In
     systick.o(i.SysTick_Handler) refers to game.o(i.getPlayerX) for getPlayerX
     systick.o(i.SysTick_Handler) refers to game.o(i.movePlayerLeft) for movePlayerLeft
     systick.o(i.SysTick_Handler) refers to game.o(i.noMove) for noMove
     systick.o(i.SysTick_Handler) refers to game.o(i.movePlayerRight) for movePlayerRight
-    systick.o(i.SysTick_Handler) refers to systick.o(.data) for ADCdata
+    systick.o(i.SysTick_Handler) refers to systick.o(.data) for button
     button.o(i.Button_Data) refers to button.o(.data) for data
     __main.o(!!!main) refers to __rtentry.o(.ARM.Collect$$rtentry$$00000000) for __rt_entry
     __rtentry.o(.ARM.Collect$$rtentry$$00000000) refers (Special) to __rtentry2.o(.ARM.Collect$$rtentry$$0000000A) for __rt_entry_li
@@ -266,9 +309,6 @@ Removing Unused input sections from the image.
     Removing sound.o(i.Sound_Fastinvader4), (2 bytes).
     Removing sound.o(i.Sound_Highpitch), (2 bytes).
     Removing sound.o(i.Sound_Killed), (2 bytes).
-    Removing sound.o(i.Sound_Play), (40 bytes).
-    Removing sound.o(i.Sound_Shoot), (20 bytes).
-    Removing sound.o(.constdata), (15435 bytes).
     Removing print.o(.text), (260 bytes).
     Removing st7735.o(i.Output_Clear), (10 bytes).
     Removing st7735.o(i.Output_Color), (12 bytes).
@@ -280,7 +320,6 @@ Removing Unused input sections from the image.
     Removing st7735.o(i.ST7735_DrawFastVLine), (124 bytes).
     Removing st7735.o(i.ST7735_InitB), (40 bytes).
     Removing st7735.o(i.ST7735_InvertDisplay), (22 bytes).
-    Removing st7735.o(i.ST7735_OutUDec), (140 bytes).
     Removing st7735.o(i.ST7735_PlotBar), (88 bytes).
     Removing st7735.o(i.ST7735_PlotClear), (92 bytes).
     Removing st7735.o(i.ST7735_PlotLine), (264 bytes).
@@ -294,16 +333,9 @@ Removing Unused input sections from the image.
     Removing st7735.o(i.ST7735_SwapColor), (18 bytes).
     Removing st7735.o(i.ferror), (8 bytes).
     Removing st7735.o(i.fgetc), (6 bytes).
-    Removing st7735.o(i.fillmessage), (72 bytes).
     Removing st7735.o(i.fputc), (16 bytes).
-    Removing st7735.o(.bss), (12 bytes).
-    Removing game.o(i.Delay100ms), (36 bytes).
-    Removing game.o(i.playerShoot), (2 bytes).
-    Removing button.o(i.Button_Data), (24 bytes).
-    Removing button.o(i.Button_Init), (56 bytes).
-    Removing button.o(.data), (4 bytes).
 
-46 unused section(s) (total 18137 bytes) removed from the image.
+35 unused section(s) (total 2296 bytes) removed from the image.
 
 ==============================================================================
 
@@ -314,51 +346,51 @@ Image Symbol Table
     Symbol Name                              Value     Ov Type        Size  Object(Section)
 
     RESET                                    0x00000000   Section      644  startup.o(RESET)
-    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit1.o ABSOLUTE
-    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit2.o ABSOLUTE
     ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit3.o ABSOLUTE
     ../clib/angel/boardlib.s                 0x00000000   Number         0  boardshut.o ABSOLUTE
-    ../clib/angel/handlers.s                 0x00000000   Number         0  __scatter_zi.o ABSOLUTE
+    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit1.o ABSOLUTE
+    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit2.o ABSOLUTE
     ../clib/angel/handlers.s                 0x00000000   Number         0  __scatter_copy.o ABSOLUTE
+    ../clib/angel/handlers.s                 0x00000000   Number         0  __scatter_zi.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit2.o ABSOLUTE
-    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry4.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry2.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit.o ABSOLUTE
-    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry4.o ABSOLUTE
     ../clib/angel/rt.s                       0x00000000   Number         0  rt_raise.o ABSOLUTE
     ../clib/angel/scatter.s                  0x00000000   Number         0  __scatter.o ABSOLUTE
     ../clib/angel/startup.s                  0x00000000   Number         0  __main.o ABSOLUTE
     ../clib/angel/sys.s                      0x00000000   Number         0  use_no_semi.o ABSOLUTE
-    ../clib/angel/sys.s                      0x00000000   Number         0  sys_stackheap_outer.o ABSOLUTE
-    ../clib/angel/sys.s                      0x00000000   Number         0  indicate_semi.o ABSOLUTE
     ../clib/angel/sys.s                      0x00000000   Number         0  libspace.o ABSOLUTE
-    ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_wrch.o ABSOLUTE
+    ../clib/angel/sys.s                      0x00000000   Number         0  indicate_semi.o ABSOLUTE
+    ../clib/angel/sys.s                      0x00000000   Number         0  sys_stackheap_outer.o ABSOLUTE
     ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_command.o ABSOLUTE
+    ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_wrch.o ABSOLUTE
     ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_exit.o ABSOLUTE
-    ../clib/armsys.c                         0x00000000   Number         0  argv_veneer.o ABSOLUTE
-    ../clib/armsys.c                         0x00000000   Number         0  argv_veneer.o ABSOLUTE
-    ../clib/armsys.c                         0x00000000   Number         0  _get_argv_nomalloc.o ABSOLUTE
     ../clib/armsys.c                         0x00000000   Number         0  no_argv.o ABSOLUTE
+    ../clib/armsys.c                         0x00000000   Number         0  _get_argv_nomalloc.o ABSOLUTE
+    ../clib/armsys.c                         0x00000000   Number         0  argv_veneer.o ABSOLUTE
+    ../clib/armsys.c                         0x00000000   Number         0  argv_veneer.o ABSOLUTE
     ../clib/heapalloc.c                      0x00000000   Number         0  hrguard.o ABSOLUTE
     ../clib/heapaux.c                        0x00000000   Number         0  heapauxi.o ABSOLUTE
-    ../clib/libinit.s                        0x00000000   Number         0  libshutdown2.o ABSOLUTE
     ../clib/libinit.s                        0x00000000   Number         0  libshutdown.o ABSOLUTE
-    ../clib/libinit.s                        0x00000000   Number         0  libinit.o ABSOLUTE
     ../clib/libinit.s                        0x00000000   Number         0  libinit2.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_general.o ABSOLUTE
+    ../clib/libinit.s                        0x00000000   Number         0  libshutdown2.o ABSOLUTE
+    ../clib/libinit.s                        0x00000000   Number         0  libinit.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_cppl_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_exit.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_formal.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_outer.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  __raise.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_stak_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_rtred_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_pvfn_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_cppl_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_segv_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_other.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_fpe_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_formal.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_outer.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_stak_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  __raise.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_general.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_abrt_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_fpe_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtred_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_pvfn_inner.o ABSOLUTE
     ../clib/signal.s                         0x00000000   Number         0  defsig.o ABSOLUTE
     ../clib/stdlib.c                         0x00000000   Number         0  exit.o ABSOLUTE
     ../fplib/fpinit.s                        0x00000000   Number         0  fpinit.o ABSOLUTE
@@ -434,52 +466,73 @@ Image Symbol Table
     .text                                    0x00000416   Section        0  indicate_semi.o(.text)
     i.ADC_In                                 0x00000418   Section        0  adc.o(i.ADC_In)
     i.ADC_Init                               0x00000444   Section        0  adc.o(i.ADC_Init)
-    i.DAC_Init                               0x00000528   Section        0  dac.o(i.DAC_Init)
-    i.DAC_Out                                0x00000564   Section        0  dac.o(i.DAC_Out)
-    i.Delay1ms                               0x00000570   Section        0  st7735.o(i.Delay1ms)
-    i.DrawScreen                             0x00000590   Section        0  game.o(i.DrawScreen)
-    i.Output_Init                            0x000005dc   Section        0  st7735.o(i.Output_Init)
-    i.PLL_Init                               0x000005ec   Section        0  pll.o(i.PLL_Init)
-    i.ST7735_DrawBitmap                      0x00000668   Section        0  st7735.o(i.ST7735_DrawBitmap)
-    i.ST7735_DrawCharS                       0x00000788   Section        0  st7735.o(i.ST7735_DrawCharS)
-    i.ST7735_DrawPixel                       0x00000880   Section        0  st7735.o(i.ST7735_DrawPixel)
-    i.ST7735_DrawString                      0x000008c8   Section        0  st7735.o(i.ST7735_DrawString)
-    i.ST7735_FillRect                        0x00000920   Section        0  st7735.o(i.ST7735_FillRect)
-    i.ST7735_FillScreen                      0x000009cc   Section        0  st7735.o(i.ST7735_FillScreen)
-    i.ST7735_InitR                           0x000009f0   Section        0  st7735.o(i.ST7735_InitR)
-    i.ST7735_OutChar                         0x00000a6c   Section        0  st7735.o(i.ST7735_OutChar)
-    i.ST7735_OutString                       0x00000b40   Section        0  st7735.o(i.ST7735_OutString)
-    i.ST7735_SetCursor                       0x00000b58   Section        0  st7735.o(i.ST7735_SetCursor)
-    i.SoundPlayer                            0x00000b78   Section        0  sound.o(i.SoundPlayer)
-    i.Sound_Init                             0x00000bcc   Section        0  sound.o(i.Sound_Init)
-    i.SpaceInvaders_Init                     0x00000bfc   Section        0  game.o(i.SpaceInvaders_Init)
-    i.SysTick_Handler                        0x00000c8c   Section        0  systick.o(i.SysTick_Handler)
-    i.SysTick_Init                           0x00000cec   Section        0  systick.o(i.SysTick_Init)
-    i.Timer0A_Handler                        0x00000d0c   Section        0  timer0.o(i.Timer0A_Handler)
-    i.Timer0_Init                            0x00000d24   Section        0  timer0.o(i.Timer0_Init)
-    i.Timer1A_Handler                        0x00000d84   Section        0  timer1.o(i.Timer1A_Handler)
-    i.commandList                            0x00000d9c   Section        0  st7735.o(i.commandList)
-    commandList                              0x00000d9d   Thumb Code    86  st7735.o(i.commandList)
-    i.commonInit                             0x00000df4   Section        0  st7735.o(i.commonInit)
-    commonInit                               0x00000df5   Thumb Code   342  st7735.o(i.commonInit)
-    i.enemyMove                              0x00000f7c   Section        0  game.o(i.enemyMove)
-    i.getPlayerX                             0x00000fe8   Section        0  game.o(i.getPlayerX)
-    i.main                                   0x00000ff4   Section        0  spaceinvaders.o(i.main)
-    i.movePlayerLeft                         0x00001020   Section        0  game.o(i.movePlayerLeft)
-    i.movePlayerRight                        0x00001030   Section        0  game.o(i.movePlayerRight)
-    i.noMove                                 0x00001040   Section        0  game.o(i.noMove)
-    i.pushColor                              0x00001050   Section        0  st7735.o(i.pushColor)
-    pushColor                                0x00001051   Thumb Code    18  st7735.o(i.pushColor)
-    i.setAddrWindow                          0x00001064   Section        0  st7735.o(i.setAddrWindow)
-    setAddrWindow                            0x00001065   Thumb Code   106  st7735.o(i.setAddrWindow)
-    .constdata                               0x000010d8   Section     2018  st7735.o(.constdata)
-    Font                                     0x000010d8   Data        1275  st7735.o(.constdata)
-    Bcmd                                     0x000015d3   Data         103  st7735.o(.constdata)
-    Rcmd1                                    0x0000163a   Data          59  st7735.o(.constdata)
-    Rcmd2green                               0x00001675   Data          13  st7735.o(.constdata)
-    Rcmd2red                                 0x00001682   Data          13  st7735.o(.constdata)
-    Rcmd3                                    0x0000168f   Data          43  st7735.o(.constdata)
-    .constdata                               0x000018ba   Section     3652  game.o(.constdata)
+    i.Button_Data                            0x00000528   Section        0  button.o(i.Button_Data)
+    i.Button_Init                            0x00000540   Section        0  button.o(i.Button_Init)
+    i.DAC_Init                               0x00000584   Section        0  dac.o(i.DAC_Init)
+    i.DAC_Out                                0x000005c0   Section        0  dac.o(i.DAC_Out)
+    i.Delay1ms                               0x000005cc   Section        0  st7735.o(i.Delay1ms)
+    i.DrawScreen                             0x000005ec   Section        0  game.o(i.DrawScreen)
+    i.Hit                                    0x00000638   Section        0  game.o(i.Hit)
+    i.Lose                                   0x00000654   Section        0  game.o(i.Lose)
+    i.Output_Init                            0x00000670   Section        0  st7735.o(i.Output_Init)
+    i.PLL_Init                               0x00000680   Section        0  pll.o(i.PLL_Init)
+    i.ST7735_DrawBitmap                      0x000006fc   Section        0  st7735.o(i.ST7735_DrawBitmap)
+    i.ST7735_DrawCharS                       0x0000081c   Section        0  st7735.o(i.ST7735_DrawCharS)
+    i.ST7735_DrawPixel                       0x00000914   Section        0  st7735.o(i.ST7735_DrawPixel)
+    i.ST7735_DrawString                      0x0000095c   Section        0  st7735.o(i.ST7735_DrawString)
+    i.ST7735_FillRect                        0x000009b4   Section        0  st7735.o(i.ST7735_FillRect)
+    i.ST7735_FillScreen                      0x00000a60   Section        0  st7735.o(i.ST7735_FillScreen)
+    i.ST7735_InitR                           0x00000a84   Section        0  st7735.o(i.ST7735_InitR)
+    i.ST7735_OutChar                         0x00000b00   Section        0  st7735.o(i.ST7735_OutChar)
+    i.ST7735_OutString                       0x00000bd4   Section        0  st7735.o(i.ST7735_OutString)
+    i.ST7735_OutUDec                         0x00000bec   Section        0  st7735.o(i.ST7735_OutUDec)
+    i.ST7735_SetCursor                       0x00000c78   Section        0  st7735.o(i.ST7735_SetCursor)
+    i.SoundPlayer                            0x00000c98   Section        0  sound.o(i.SoundPlayer)
+    i.Sound_Init                             0x00000cec   Section        0  sound.o(i.Sound_Init)
+    i.Sound_Play                             0x00000d1c   Section        0  sound.o(i.Sound_Play)
+    i.Sound_Shoot                            0x00000d44   Section        0  sound.o(i.Sound_Shoot)
+    i.SpaceInvaders_Init                     0x00000d58   Section        0  game.o(i.SpaceInvaders_Init)
+    i.SysTick_Handler                        0x00000e00   Section        0  systick.o(i.SysTick_Handler)
+    i.SysTick_Init                           0x00000e9c   Section        0  systick.o(i.SysTick_Init)
+    i.Timer0A_Handler                        0x00000ebc   Section        0  timer0.o(i.Timer0A_Handler)
+    i.Timer0_Init                            0x00000ed4   Section        0  timer0.o(i.Timer0_Init)
+    i.Timer1A_Handler                        0x00000f34   Section        0  timer1.o(i.Timer1A_Handler)
+    i.Win                                    0x00000f4c   Section        0  game.o(i.Win)
+    i.checkEnd                               0x00000f68   Section        0  game.o(i.checkEnd)
+    i.commandList                            0x00000f94   Section        0  st7735.o(i.commandList)
+    commandList                              0x00000f95   Thumb Code    86  st7735.o(i.commandList)
+    i.commonInit                             0x00000fec   Section        0  st7735.o(i.commonInit)
+    commonInit                               0x00000fed   Thumb Code   342  st7735.o(i.commonInit)
+    i.drawLaser                              0x00001174   Section        0  game.o(i.drawLaser)
+    i.drawScore                              0x000011a0   Section        0  game.o(i.drawScore)
+    i.enemyMove                              0x000011cc   Section        0  game.o(i.enemyMove)
+    i.fillmessage                            0x00001238   Section        0  st7735.o(i.fillmessage)
+    i.getEnemyX                              0x00001280   Section        0  game.o(i.getEnemyX)
+    i.getEnemyY                              0x0000128c   Section        0  game.o(i.getEnemyY)
+    i.getLaser                               0x00001298   Section        0  game.o(i.getLaser)
+    i.getLaserX                              0x000012a4   Section        0  game.o(i.getLaserX)
+    i.getLaserY                              0x000012b0   Section        0  game.o(i.getLaserY)
+    i.getPlayerX                             0x000012bc   Section        0  game.o(i.getPlayerX)
+    i.hitDetect                              0x000012c8   Section        0  game.o(i.hitDetect)
+    i.laserInit                              0x00001330   Section        0  game.o(i.laserInit)
+    i.main                                   0x0000135c   Section        0  spaceinvaders.o(i.main)
+    i.moveLaser                              0x000013c8   Section        0  game.o(i.moveLaser)
+    i.movePlayerLeft                         0x000013e4   Section        0  game.o(i.movePlayerLeft)
+    i.movePlayerRight                        0x000013f4   Section        0  game.o(i.movePlayerRight)
+    i.noMove                                 0x00001404   Section        0  game.o(i.noMove)
+    i.pushColor                              0x00001414   Section        0  st7735.o(i.pushColor)
+    pushColor                                0x00001415   Thumb Code    18  st7735.o(i.pushColor)
+    i.setAddrWindow                          0x00001428   Section        0  st7735.o(i.setAddrWindow)
+    setAddrWindow                            0x00001429   Thumb Code   106  st7735.o(i.setAddrWindow)
+    .constdata                               0x0000149c   Section    15435  sound.o(.constdata)
+    .constdata                               0x000050e7   Section     2018  st7735.o(.constdata)
+    Font                                     0x000050e7   Data        1275  st7735.o(.constdata)
+    Bcmd                                     0x000055e2   Data         103  st7735.o(.constdata)
+    Rcmd1                                    0x00005649   Data          59  st7735.o(.constdata)
+    Rcmd2green                               0x00005684   Data          13  st7735.o(.constdata)
+    Rcmd2red                                 0x00005691   Data          13  st7735.o(.constdata)
+    Rcmd3                                    0x0000569e   Data          43  st7735.o(.constdata)
+    .constdata                               0x000058ca   Section     3652  game.o(.constdata)
     .data                                    0x20000000   Section        4  timer0.o(.data)
     .data                                    0x20000004   Section        4  timer1.o(.data)
     .data                                    0x20000008   Section       16  sound.o(.data)
@@ -490,14 +543,16 @@ Image Symbol Table
     TabColor                                 0x20000025   Data           1  st7735.o(.data)
     _width                                   0x20000026   Data           2  st7735.o(.data)
     _height                                  0x20000028   Data           2  st7735.o(.data)
-    .data                                    0x20000044   Section       12  game.o(.data)
-    .data                                    0x20000050   Section        8  systick.o(.data)
-    .bss                                     0x20000058   Section       28  game.o(.bss)
-    .bss                                     0x20000074   Section       96  libspace.o(.bss)
-    HEAP                                     0x200000d8   Section        0  startup.o(HEAP)
-    STACK                                    0x200000d8   Section     1024  startup.o(STACK)
-    HeapMem                                  0x200000d8   Data           0  startup.o(HEAP)
-    StackMem                                 0x200000d8   Data           0  startup.o(STACK)
+    .data                                    0x20000044   Section       36  game.o(.data)
+    .data                                    0x20000068   Section       20  systick.o(.data)
+    .data                                    0x2000007c   Section        4  button.o(.data)
+    .bss                                     0x20000080   Section       12  st7735.o(.bss)
+    .bss                                     0x2000008c   Section       44  game.o(.bss)
+    .bss                                     0x200000b8   Section       96  libspace.o(.bss)
+    HEAP                                     0x20000118   Section        0  startup.o(HEAP)
+    STACK                                    0x20000118   Section     1024  startup.o(STACK)
+    HeapMem                                  0x20000118   Data           0  startup.o(HEAP)
+    StackMem                                 0x20000118   Data           0  startup.o(STACK)
 
     Global Symbols
 
@@ -725,53 +780,81 @@ Image Symbol Table
     __semihosting_library_function           0x00000417   Thumb Code     0  indicate_semi.o(.text)
     ADC_In                                   0x00000419   Thumb Code    38  adc.o(i.ADC_In)
     ADC_Init                                 0x00000445   Thumb Code   202  adc.o(i.ADC_Init)
-    DAC_Init                                 0x00000529   Thumb Code    46  dac.o(i.DAC_Init)
-    DAC_Out                                  0x00000565   Thumb Code     6  dac.o(i.DAC_Out)
-    Delay1ms                                 0x00000571   Thumb Code    32  st7735.o(i.Delay1ms)
-    DrawScreen                               0x00000591   Thumb Code    66  game.o(i.DrawScreen)
-    Output_Init                              0x000005dd   Thumb Code    16  st7735.o(i.Output_Init)
-    PLL_Init                                 0x000005ed   Thumb Code   120  pll.o(i.PLL_Init)
-    ST7735_DrawBitmap                        0x00000669   Thumb Code   280  st7735.o(i.ST7735_DrawBitmap)
-    ST7735_DrawCharS                         0x00000789   Thumb Code   236  st7735.o(i.ST7735_DrawCharS)
-    ST7735_DrawPixel                         0x00000881   Thumb Code    64  st7735.o(i.ST7735_DrawPixel)
-    ST7735_DrawString                        0x000008c9   Thumb Code    86  st7735.o(i.ST7735_DrawString)
-    ST7735_FillRect                          0x00000921   Thumb Code   164  st7735.o(i.ST7735_FillRect)
-    ST7735_FillScreen                        0x000009cd   Thumb Code    28  st7735.o(i.ST7735_FillScreen)
-    ST7735_InitR                             0x000009f1   Thumb Code    90  st7735.o(i.ST7735_InitR)
-    ST7735_OutChar                           0x00000a6d   Thumb Code   176  st7735.o(i.ST7735_OutChar)
-    ST7735_OutString                         0x00000b41   Thumb Code    24  st7735.o(i.ST7735_OutString)
-    ST7735_SetCursor                         0x00000b59   Thumb Code    22  st7735.o(i.ST7735_SetCursor)
-    SoundPlayer                              0x00000b79   Thumb Code    68  sound.o(i.SoundPlayer)
-    Sound_Init                               0x00000bcd   Thumb Code    32  sound.o(i.Sound_Init)
-    SpaceInvaders_Init                       0x00000bfd   Thumb Code   122  game.o(i.SpaceInvaders_Init)
-    SysTick_Handler                          0x00000c8d   Thumb Code    90  systick.o(i.SysTick_Handler)
-    SysTick_Init                             0x00000ced   Thumb Code    28  systick.o(i.SysTick_Init)
-    Timer0A_Handler                          0x00000d0d   Thumb Code    16  timer0.o(i.Timer0A_Handler)
-    Timer0_Init                              0x00000d25   Thumb Code    74  timer0.o(i.Timer0_Init)
-    Timer1A_Handler                          0x00000d85   Thumb Code    16  timer1.o(i.Timer1A_Handler)
-    enemyMove                                0x00000f7d   Thumb Code    96  game.o(i.enemyMove)
-    getPlayerX                               0x00000fe9   Thumb Code     6  game.o(i.getPlayerX)
-    main                                     0x00000ff5   Thumb Code    42  spaceinvaders.o(i.main)
-    movePlayerLeft                           0x00001021   Thumb Code    12  game.o(i.movePlayerLeft)
-    movePlayerRight                          0x00001031   Thumb Code    12  game.o(i.movePlayerRight)
-    noMove                                   0x00001041   Thumb Code    10  game.o(i.noMove)
-    dBfs                                     0x000016ba   Data         512  st7735.o(.constdata)
-    Explosion                                0x000018ba   Data         320  game.o(.constdata)
-    PlayerLaser                              0x000019fa   Data          40  game.o(.constdata)
-    BlackLaser                               0x00001a22   Data          40  game.o(.constdata)
-    SmallEnemy10pointA                       0x00001a4a   Data         320  game.o(.constdata)
-    ns                                       0x00001b8a   Data         288  game.o(.constdata)
-    sp                                       0x00001caa   Data         288  game.o(.constdata)
-    SmallEnemy10pointB                       0x00001dca   Data         320  game.o(.constdata)
-    SmallEnemy20pointA                       0x00001f0a   Data         320  game.o(.constdata)
-    SmallEnemy20pointB                       0x0000204a   Data         320  game.o(.constdata)
-    SmallEnemy30pointA                       0x0000218a   Data         320  game.o(.constdata)
-    SmallEnemy30pointB                       0x000022ca   Data         320  game.o(.constdata)
-    PlayerShip0                              0x0000240a   Data         288  game.o(.constdata)
-    pship                                    0x0000252a   Data         288  game.o(.constdata)
-    Bunker0                                  0x0000264a   Data         180  game.o(.constdata)
-    Region$$Table$$Base                      0x00002700   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x00002720   Number         0  anon$$obj.o(Region$$Table)
+    Button_Data                              0x00000529   Thumb Code    14  button.o(i.Button_Data)
+    Button_Init                              0x00000541   Thumb Code    52  button.o(i.Button_Init)
+    DAC_Init                                 0x00000585   Thumb Code    46  dac.o(i.DAC_Init)
+    DAC_Out                                  0x000005c1   Thumb Code     6  dac.o(i.DAC_Out)
+    Delay1ms                                 0x000005cd   Thumb Code    32  st7735.o(i.Delay1ms)
+    DrawScreen                               0x000005ed   Thumb Code    66  game.o(i.DrawScreen)
+    Hit                                      0x00000639   Thumb Code    18  game.o(i.Hit)
+    Lose                                     0x00000655   Thumb Code    24  game.o(i.Lose)
+    Output_Init                              0x00000671   Thumb Code    16  st7735.o(i.Output_Init)
+    PLL_Init                                 0x00000681   Thumb Code   120  pll.o(i.PLL_Init)
+    ST7735_DrawBitmap                        0x000006fd   Thumb Code   280  st7735.o(i.ST7735_DrawBitmap)
+    ST7735_DrawCharS                         0x0000081d   Thumb Code   236  st7735.o(i.ST7735_DrawCharS)
+    ST7735_DrawPixel                         0x00000915   Thumb Code    64  st7735.o(i.ST7735_DrawPixel)
+    ST7735_DrawString                        0x0000095d   Thumb Code    86  st7735.o(i.ST7735_DrawString)
+    ST7735_FillRect                          0x000009b5   Thumb Code   164  st7735.o(i.ST7735_FillRect)
+    ST7735_FillScreen                        0x00000a61   Thumb Code    28  st7735.o(i.ST7735_FillScreen)
+    ST7735_InitR                             0x00000a85   Thumb Code    90  st7735.o(i.ST7735_InitR)
+    ST7735_OutChar                           0x00000b01   Thumb Code   176  st7735.o(i.ST7735_OutChar)
+    ST7735_OutString                         0x00000bd5   Thumb Code    24  st7735.o(i.ST7735_OutString)
+    ST7735_OutUDec                           0x00000bed   Thumb Code   118  st7735.o(i.ST7735_OutUDec)
+    ST7735_SetCursor                         0x00000c79   Thumb Code    22  st7735.o(i.ST7735_SetCursor)
+    SoundPlayer                              0x00000c99   Thumb Code    68  sound.o(i.SoundPlayer)
+    Sound_Init                               0x00000ced   Thumb Code    32  sound.o(i.Sound_Init)
+    Sound_Play                               0x00000d1d   Thumb Code    22  sound.o(i.Sound_Play)
+    Sound_Shoot                              0x00000d45   Thumb Code    14  sound.o(i.Sound_Shoot)
+    SpaceInvaders_Init                       0x00000d59   Thumb Code   140  game.o(i.SpaceInvaders_Init)
+    SysTick_Handler                          0x00000e01   Thumb Code   146  systick.o(i.SysTick_Handler)
+    SysTick_Init                             0x00000e9d   Thumb Code    28  systick.o(i.SysTick_Init)
+    Timer0A_Handler                          0x00000ebd   Thumb Code    16  timer0.o(i.Timer0A_Handler)
+    Timer0_Init                              0x00000ed5   Thumb Code    74  timer0.o(i.Timer0_Init)
+    Timer1A_Handler                          0x00000f35   Thumb Code    16  timer1.o(i.Timer1A_Handler)
+    Win                                      0x00000f4d   Thumb Code    24  game.o(i.Win)
+    checkEnd                                 0x00000f69   Thumb Code    36  game.o(i.checkEnd)
+    drawLaser                                0x00001175   Thumb Code    36  game.o(i.drawLaser)
+    drawScore                                0x000011a1   Thumb Code    36  game.o(i.drawScore)
+    enemyMove                                0x000011cd   Thumb Code    96  game.o(i.enemyMove)
+    fillmessage                              0x00001239   Thumb Code    64  st7735.o(i.fillmessage)
+    getEnemyX                                0x00001281   Thumb Code     6  game.o(i.getEnemyX)
+    getEnemyY                                0x0000128d   Thumb Code     6  game.o(i.getEnemyY)
+    getLaser                                 0x00001299   Thumb Code     6  game.o(i.getLaser)
+    getLaserX                                0x000012a5   Thumb Code     6  game.o(i.getLaserX)
+    getLaserY                                0x000012b1   Thumb Code     6  game.o(i.getLaserY)
+    getPlayerX                               0x000012bd   Thumb Code     6  game.o(i.getPlayerX)
+    hitDetect                                0x000012c9   Thumb Code   100  game.o(i.hitDetect)
+    laserInit                                0x00001331   Thumb Code    32  game.o(i.laserInit)
+    main                                     0x0000135d   Thumb Code   108  spaceinvaders.o(i.main)
+    moveLaser                                0x000013c9   Thumb Code    24  game.o(i.moveLaser)
+    movePlayerLeft                           0x000013e5   Thumb Code    12  game.o(i.movePlayerLeft)
+    movePlayerRight                          0x000013f5   Thumb Code    12  game.o(i.movePlayerRight)
+    noMove                                   0x00001405   Thumb Code    10  game.o(i.noMove)
+    shoot                                    0x0000149c   Data        4080  sound.o(.constdata)
+    invaderkilled                            0x0000248c   Data        3377  sound.o(.constdata)
+    explosion                                0x000031bd   Data        2000  sound.o(.constdata)
+    fastinvader1                             0x0000398d   Data         982  sound.o(.constdata)
+    fastinvader2                             0x00003d63   Data        1042  sound.o(.constdata)
+    fastinvader3                             0x00004175   Data        1054  sound.o(.constdata)
+    fastinvader4                             0x00004593   Data        1098  sound.o(.constdata)
+    highpitch                                0x000049dd   Data        1802  sound.o(.constdata)
+    dBfs                                     0x000056c9   Data         512  st7735.o(.constdata)
+    Explosion                                0x000058ca   Data         320  game.o(.constdata)
+    PlayerLaser                              0x00005a0a   Data          40  game.o(.constdata)
+    BlackLaser                               0x00005a32   Data          40  game.o(.constdata)
+    SmallEnemy10pointA                       0x00005a5a   Data         320  game.o(.constdata)
+    ns                                       0x00005b9a   Data         288  game.o(.constdata)
+    sp                                       0x00005cba   Data         288  game.o(.constdata)
+    SmallEnemy10pointB                       0x00005dda   Data         320  game.o(.constdata)
+    SmallEnemy20pointA                       0x00005f1a   Data         320  game.o(.constdata)
+    SmallEnemy20pointB                       0x0000605a   Data         320  game.o(.constdata)
+    SmallEnemy30pointA                       0x0000619a   Data         320  game.o(.constdata)
+    SmallEnemy30pointB                       0x000062da   Data         320  game.o(.constdata)
+    PlayerShip0                              0x0000641a   Data         288  game.o(.constdata)
+    pship                                    0x0000653a   Data         288  game.o(.constdata)
+    Bunker0                                  0x0000665a   Data         180  game.o(.constdata)
+    Region$$Table$$Base                      0x00006710   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x00006730   Number         0  anon$$obj.o(Region$$Table)
     PeriodicTask0                            0x20000000   Data           4  timer0.o(.data)
     PeriodicTask1                            0x20000004   Data           4  timer1.o(.data)
     current                                  0x20000008   Data           4  sound.o(.data)
@@ -787,14 +870,28 @@ Image Symbol Table
     X                                        0x20000038   Data           4  st7735.o(.data)
     Yrange                                   0x2000003c   Data           4  st7735.o(.data)
     lastj                                    0x20000040   Data           4  st7735.o(.data)
-    score                                    0x20000044   Data           6  game.o(.data)
-    count                                    0x2000004c   Data           4  game.o(.data)
-    button                                   0x20000050   Data           4  systick.o(.data)
-    ADCdata                                  0x20000054   Data           4  systick.o(.data)
-    Enemy                                    0x20000058   Data          16  game.o(.bss)
-    Player                                   0x20000068   Data          12  game.o(.bss)
-    __libspace_start                         0x20000074   Data          96  libspace.o(.bss)
-    __temporary_stack_top$libspace           0x200000d4   Data           0  libspace.o(.bss)
+    score                                    0x20000044   Data           8  game.o(.data)
+    win                                      0x2000004c   Data           9  game.o(.data)
+    lose                                     0x20000055   Data          10  game.o(.data)
+    hp                                       0x2000005f   Data           4  game.o(.data)
+    count                                    0x20000064   Data           4  game.o(.data)
+    ADCdata                                  0x20000068   Data           4  systick.o(.data)
+    button                                   0x2000006c   Data           4  systick.o(.data)
+    LaserY                                   0x20000070   Data           2  systick.o(.data)
+    LaserX                                   0x20000072   Data           2  systick.o(.data)
+    EnemyX                                   0x20000074   Data           2  systick.o(.data)
+    EnemyY                                   0x20000076   Data           2  systick.o(.data)
+    LaserW                                   0x20000078   Data           1  systick.o(.data)
+    LaserH                                   0x20000079   Data           1  systick.o(.data)
+    EnemyW                                   0x2000007a   Data           1  systick.o(.data)
+    EnemyH                                   0x2000007b   Data           1  systick.o(.data)
+    data                                     0x2000007c   Data           4  button.o(.data)
+    Message                                  0x20000080   Data          12  st7735.o(.bss)
+    Enemy                                    0x2000008c   Data          16  game.o(.bss)
+    Player                                   0x2000009c   Data          16  game.o(.bss)
+    Laser                                    0x200000ac   Data          12  game.o(.bss)
+    __libspace_start                         0x200000b8   Data          96  libspace.o(.bss)
+    __temporary_stack_top$libspace           0x20000118   Data           0  libspace.o(.bss)
 
 
 
@@ -804,138 +901,160 @@ Memory Map of the image
 
   Image Entry point : 0x0000026d
 
-  Load Region LR_1 (Base: 0x00000000, Size: 0x00002778, Max: 0xffffffff, ABSOLUTE)
+  Load Region LR_1 (Base: 0x00000000, Size: 0x000067b0, Max: 0xffffffff, ABSOLUTE)
 
-    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x00002720, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x00006730, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x00000000   0x00000000   0x00000284   Code   RO            3  * RESET               startup.o
-    0x00000284   0x00000284   0x00000008   Code   RO          603  * !!!main             c_w.l(__main.o)
-    0x0000028c   0x0000028c   0x00000034   Code   RO          760    !!!scatter          c_w.l(__scatter.o)
-    0x000002c0   0x000002c0   0x0000001a   Code   RO          762    !!handler_copy      c_w.l(__scatter_copy.o)
+    0x00000284   0x00000284   0x00000008   Code   RO          680  * !!!main             c_w.l(__main.o)
+    0x0000028c   0x0000028c   0x00000034   Code   RO          837    !!!scatter          c_w.l(__scatter.o)
+    0x000002c0   0x000002c0   0x0000001a   Code   RO          839    !!handler_copy      c_w.l(__scatter_copy.o)
     0x000002da   0x000002da   0x00000002   PAD
-    0x000002dc   0x000002dc   0x0000001c   Code   RO          764    !!handler_zi        c_w.l(__scatter_zi.o)
-    0x000002f8   0x000002f8   0x00000002   Code   RO          630    .ARM.Collect$$libinit$$00000000  c_w.l(libinit.o)
-    0x000002fa   0x000002fa   0x00000000   Code   RO          637    .ARM.Collect$$libinit$$00000002  c_w.l(libinit2.o)
-    0x000002fa   0x000002fa   0x00000000   Code   RO          639    .ARM.Collect$$libinit$$00000004  c_w.l(libinit2.o)
-    0x000002fa   0x000002fa   0x00000000   Code   RO          642    .ARM.Collect$$libinit$$0000000A  c_w.l(libinit2.o)
-    0x000002fa   0x000002fa   0x00000000   Code   RO          644    .ARM.Collect$$libinit$$0000000C  c_w.l(libinit2.o)
-    0x000002fa   0x000002fa   0x00000000   Code   RO          646    .ARM.Collect$$libinit$$0000000E  c_w.l(libinit2.o)
-    0x000002fa   0x000002fa   0x00000000   Code   RO          649    .ARM.Collect$$libinit$$00000011  c_w.l(libinit2.o)
-    0x000002fa   0x000002fa   0x00000000   Code   RO          651    .ARM.Collect$$libinit$$00000013  c_w.l(libinit2.o)
-    0x000002fa   0x000002fa   0x00000000   Code   RO          653    .ARM.Collect$$libinit$$00000015  c_w.l(libinit2.o)
-    0x000002fa   0x000002fa   0x00000000   Code   RO          655    .ARM.Collect$$libinit$$00000017  c_w.l(libinit2.o)
-    0x000002fa   0x000002fa   0x00000000   Code   RO          657    .ARM.Collect$$libinit$$00000019  c_w.l(libinit2.o)
-    0x000002fa   0x000002fa   0x00000000   Code   RO          659    .ARM.Collect$$libinit$$0000001B  c_w.l(libinit2.o)
-    0x000002fa   0x000002fa   0x00000000   Code   RO          661    .ARM.Collect$$libinit$$0000001D  c_w.l(libinit2.o)
-    0x000002fa   0x000002fa   0x00000000   Code   RO          663    .ARM.Collect$$libinit$$0000001F  c_w.l(libinit2.o)
-    0x000002fa   0x000002fa   0x00000000   Code   RO          665    .ARM.Collect$$libinit$$00000021  c_w.l(libinit2.o)
-    0x000002fa   0x000002fa   0x00000000   Code   RO          667    .ARM.Collect$$libinit$$00000023  c_w.l(libinit2.o)
-    0x000002fa   0x000002fa   0x00000000   Code   RO          669    .ARM.Collect$$libinit$$00000025  c_w.l(libinit2.o)
-    0x000002fa   0x000002fa   0x00000000   Code   RO          673    .ARM.Collect$$libinit$$0000002C  c_w.l(libinit2.o)
-    0x000002fa   0x000002fa   0x00000000   Code   RO          675    .ARM.Collect$$libinit$$0000002E  c_w.l(libinit2.o)
-    0x000002fa   0x000002fa   0x00000000   Code   RO          677    .ARM.Collect$$libinit$$00000030  c_w.l(libinit2.o)
-    0x000002fa   0x000002fa   0x00000000   Code   RO          679    .ARM.Collect$$libinit$$00000032  c_w.l(libinit2.o)
-    0x000002fa   0x000002fa   0x00000002   Code   RO          680    .ARM.Collect$$libinit$$00000033  c_w.l(libinit2.o)
-    0x000002fc   0x000002fc   0x00000002   Code   RO          700    .ARM.Collect$$libshutdown$$00000000  c_w.l(libshutdown.o)
-    0x000002fe   0x000002fe   0x00000000   Code   RO          713    .ARM.Collect$$libshutdown$$00000002  c_w.l(libshutdown2.o)
-    0x000002fe   0x000002fe   0x00000000   Code   RO          715    .ARM.Collect$$libshutdown$$00000004  c_w.l(libshutdown2.o)
-    0x000002fe   0x000002fe   0x00000000   Code   RO          718    .ARM.Collect$$libshutdown$$00000007  c_w.l(libshutdown2.o)
-    0x000002fe   0x000002fe   0x00000000   Code   RO          721    .ARM.Collect$$libshutdown$$0000000A  c_w.l(libshutdown2.o)
-    0x000002fe   0x000002fe   0x00000000   Code   RO          723    .ARM.Collect$$libshutdown$$0000000C  c_w.l(libshutdown2.o)
-    0x000002fe   0x000002fe   0x00000000   Code   RO          726    .ARM.Collect$$libshutdown$$0000000F  c_w.l(libshutdown2.o)
-    0x000002fe   0x000002fe   0x00000002   Code   RO          727    .ARM.Collect$$libshutdown$$00000010  c_w.l(libshutdown2.o)
-    0x00000300   0x00000300   0x00000000   Code   RO          605    .ARM.Collect$$rtentry$$00000000  c_w.l(__rtentry.o)
-    0x00000300   0x00000300   0x00000000   Code   RO          607    .ARM.Collect$$rtentry$$00000002  c_w.l(__rtentry2.o)
-    0x00000300   0x00000300   0x00000006   Code   RO          619    .ARM.Collect$$rtentry$$00000004  c_w.l(__rtentry4.o)
-    0x00000306   0x00000306   0x00000000   Code   RO          609    .ARM.Collect$$rtentry$$00000009  c_w.l(__rtentry2.o)
-    0x00000306   0x00000306   0x00000004   Code   RO          610    .ARM.Collect$$rtentry$$0000000A  c_w.l(__rtentry2.o)
-    0x0000030a   0x0000030a   0x00000000   Code   RO          612    .ARM.Collect$$rtentry$$0000000C  c_w.l(__rtentry2.o)
-    0x0000030a   0x0000030a   0x00000008   Code   RO          613    .ARM.Collect$$rtentry$$0000000D  c_w.l(__rtentry2.o)
-    0x00000312   0x00000312   0x00000002   Code   RO          634    .ARM.Collect$$rtexit$$00000000  c_w.l(rtexit.o)
-    0x00000314   0x00000314   0x00000000   Code   RO          682    .ARM.Collect$$rtexit$$00000002  c_w.l(rtexit2.o)
-    0x00000314   0x00000314   0x00000004   Code   RO          683    .ARM.Collect$$rtexit$$00000003  c_w.l(rtexit2.o)
-    0x00000318   0x00000318   0x00000006   Code   RO          684    .ARM.Collect$$rtexit$$00000004  c_w.l(rtexit2.o)
+    0x000002dc   0x000002dc   0x0000001c   Code   RO          841    !!handler_zi        c_w.l(__scatter_zi.o)
+    0x000002f8   0x000002f8   0x00000002   Code   RO          707    .ARM.Collect$$libinit$$00000000  c_w.l(libinit.o)
+    0x000002fa   0x000002fa   0x00000000   Code   RO          714    .ARM.Collect$$libinit$$00000002  c_w.l(libinit2.o)
+    0x000002fa   0x000002fa   0x00000000   Code   RO          716    .ARM.Collect$$libinit$$00000004  c_w.l(libinit2.o)
+    0x000002fa   0x000002fa   0x00000000   Code   RO          719    .ARM.Collect$$libinit$$0000000A  c_w.l(libinit2.o)
+    0x000002fa   0x000002fa   0x00000000   Code   RO          721    .ARM.Collect$$libinit$$0000000C  c_w.l(libinit2.o)
+    0x000002fa   0x000002fa   0x00000000   Code   RO          723    .ARM.Collect$$libinit$$0000000E  c_w.l(libinit2.o)
+    0x000002fa   0x000002fa   0x00000000   Code   RO          726    .ARM.Collect$$libinit$$00000011  c_w.l(libinit2.o)
+    0x000002fa   0x000002fa   0x00000000   Code   RO          728    .ARM.Collect$$libinit$$00000013  c_w.l(libinit2.o)
+    0x000002fa   0x000002fa   0x00000000   Code   RO          730    .ARM.Collect$$libinit$$00000015  c_w.l(libinit2.o)
+    0x000002fa   0x000002fa   0x00000000   Code   RO          732    .ARM.Collect$$libinit$$00000017  c_w.l(libinit2.o)
+    0x000002fa   0x000002fa   0x00000000   Code   RO          734    .ARM.Collect$$libinit$$00000019  c_w.l(libinit2.o)
+    0x000002fa   0x000002fa   0x00000000   Code   RO          736    .ARM.Collect$$libinit$$0000001B  c_w.l(libinit2.o)
+    0x000002fa   0x000002fa   0x00000000   Code   RO          738    .ARM.Collect$$libinit$$0000001D  c_w.l(libinit2.o)
+    0x000002fa   0x000002fa   0x00000000   Code   RO          740    .ARM.Collect$$libinit$$0000001F  c_w.l(libinit2.o)
+    0x000002fa   0x000002fa   0x00000000   Code   RO          742    .ARM.Collect$$libinit$$00000021  c_w.l(libinit2.o)
+    0x000002fa   0x000002fa   0x00000000   Code   RO          744    .ARM.Collect$$libinit$$00000023  c_w.l(libinit2.o)
+    0x000002fa   0x000002fa   0x00000000   Code   RO          746    .ARM.Collect$$libinit$$00000025  c_w.l(libinit2.o)
+    0x000002fa   0x000002fa   0x00000000   Code   RO          750    .ARM.Collect$$libinit$$0000002C  c_w.l(libinit2.o)
+    0x000002fa   0x000002fa   0x00000000   Code   RO          752    .ARM.Collect$$libinit$$0000002E  c_w.l(libinit2.o)
+    0x000002fa   0x000002fa   0x00000000   Code   RO          754    .ARM.Collect$$libinit$$00000030  c_w.l(libinit2.o)
+    0x000002fa   0x000002fa   0x00000000   Code   RO          756    .ARM.Collect$$libinit$$00000032  c_w.l(libinit2.o)
+    0x000002fa   0x000002fa   0x00000002   Code   RO          757    .ARM.Collect$$libinit$$00000033  c_w.l(libinit2.o)
+    0x000002fc   0x000002fc   0x00000002   Code   RO          777    .ARM.Collect$$libshutdown$$00000000  c_w.l(libshutdown.o)
+    0x000002fe   0x000002fe   0x00000000   Code   RO          790    .ARM.Collect$$libshutdown$$00000002  c_w.l(libshutdown2.o)
+    0x000002fe   0x000002fe   0x00000000   Code   RO          792    .ARM.Collect$$libshutdown$$00000004  c_w.l(libshutdown2.o)
+    0x000002fe   0x000002fe   0x00000000   Code   RO          795    .ARM.Collect$$libshutdown$$00000007  c_w.l(libshutdown2.o)
+    0x000002fe   0x000002fe   0x00000000   Code   RO          798    .ARM.Collect$$libshutdown$$0000000A  c_w.l(libshutdown2.o)
+    0x000002fe   0x000002fe   0x00000000   Code   RO          800    .ARM.Collect$$libshutdown$$0000000C  c_w.l(libshutdown2.o)
+    0x000002fe   0x000002fe   0x00000000   Code   RO          803    .ARM.Collect$$libshutdown$$0000000F  c_w.l(libshutdown2.o)
+    0x000002fe   0x000002fe   0x00000002   Code   RO          804    .ARM.Collect$$libshutdown$$00000010  c_w.l(libshutdown2.o)
+    0x00000300   0x00000300   0x00000000   Code   RO          682    .ARM.Collect$$rtentry$$00000000  c_w.l(__rtentry.o)
+    0x00000300   0x00000300   0x00000000   Code   RO          684    .ARM.Collect$$rtentry$$00000002  c_w.l(__rtentry2.o)
+    0x00000300   0x00000300   0x00000006   Code   RO          696    .ARM.Collect$$rtentry$$00000004  c_w.l(__rtentry4.o)
+    0x00000306   0x00000306   0x00000000   Code   RO          686    .ARM.Collect$$rtentry$$00000009  c_w.l(__rtentry2.o)
+    0x00000306   0x00000306   0x00000004   Code   RO          687    .ARM.Collect$$rtentry$$0000000A  c_w.l(__rtentry2.o)
+    0x0000030a   0x0000030a   0x00000000   Code   RO          689    .ARM.Collect$$rtentry$$0000000C  c_w.l(__rtentry2.o)
+    0x0000030a   0x0000030a   0x00000008   Code   RO          690    .ARM.Collect$$rtentry$$0000000D  c_w.l(__rtentry2.o)
+    0x00000312   0x00000312   0x00000002   Code   RO          711    .ARM.Collect$$rtexit$$00000000  c_w.l(rtexit.o)
+    0x00000314   0x00000314   0x00000000   Code   RO          759    .ARM.Collect$$rtexit$$00000002  c_w.l(rtexit2.o)
+    0x00000314   0x00000314   0x00000004   Code   RO          760    .ARM.Collect$$rtexit$$00000003  c_w.l(rtexit2.o)
+    0x00000318   0x00000318   0x00000006   Code   RO          761    .ARM.Collect$$rtexit$$00000004  c_w.l(rtexit2.o)
     0x0000031e   0x0000031e   0x00000002   PAD
     0x00000320   0x00000320   0x00000030   Code   RO            4    .text               startup.o
     0x00000350   0x00000350   0x0000004c   Code   RO          180    .text               lcd.o
-    0x0000039c   0x0000039c   0x00000006   Code   RO          601    .text               c_w.l(heapauxi.o)
-    0x000003a2   0x000003a2   0x0000004a   Code   RO          621    .text               c_w.l(sys_stackheap_outer.o)
-    0x000003ec   0x000003ec   0x00000012   Code   RO          623    .text               c_w.l(exit.o)
+    0x0000039c   0x0000039c   0x00000006   Code   RO          678    .text               c_w.l(heapauxi.o)
+    0x000003a2   0x000003a2   0x0000004a   Code   RO          698    .text               c_w.l(sys_stackheap_outer.o)
+    0x000003ec   0x000003ec   0x00000012   Code   RO          700    .text               c_w.l(exit.o)
     0x000003fe   0x000003fe   0x00000002   PAD
-    0x00000400   0x00000400   0x00000008   Code   RO          631    .text               c_w.l(libspace.o)
-    0x00000408   0x00000408   0x0000000c   Code   RO          692    .text               c_w.l(sys_exit.o)
-    0x00000414   0x00000414   0x00000002   Code   RO          703    .text               c_w.l(use_no_semi.o)
-    0x00000416   0x00000416   0x00000000   Code   RO          705    .text               c_w.l(indicate_semi.o)
+    0x00000400   0x00000400   0x00000008   Code   RO          708    .text               c_w.l(libspace.o)
+    0x00000408   0x00000408   0x0000000c   Code   RO          769    .text               c_w.l(sys_exit.o)
+    0x00000414   0x00000414   0x00000002   Code   RO          780    .text               c_w.l(use_no_semi.o)
+    0x00000416   0x00000416   0x00000000   Code   RO          782    .text               c_w.l(indicate_semi.o)
     0x00000416   0x00000416   0x00000002   PAD
     0x00000418   0x00000418   0x0000002c   Code   RO           41    i.ADC_In            adc.o
     0x00000444   0x00000444   0x000000e4   Code   RO           42    i.ADC_Init          adc.o
-    0x00000528   0x00000528   0x0000003c   Code   RO           16    i.DAC_Init          dac.o
-    0x00000564   0x00000564   0x0000000c   Code   RO           17    i.DAC_Out           dac.o
-    0x00000570   0x00000570   0x00000020   Code   RO          214    i.Delay1ms          st7735.o
-    0x00000590   0x00000590   0x0000004c   Code   RO          490    i.DrawScreen        game.o
-    0x000005dc   0x000005dc   0x00000010   Code   RO          217    i.Output_Init       st7735.o
-    0x000005ec   0x000005ec   0x0000007c   Code   RO          477    i.PLL_Init          pll.o
-    0x00000668   0x00000668   0x00000120   Code   RO          221    i.ST7735_DrawBitmap  st7735.o
-    0x00000788   0x00000788   0x000000f8   Code   RO          223    i.ST7735_DrawCharS  st7735.o
-    0x00000880   0x00000880   0x00000048   Code   RO          226    i.ST7735_DrawPixel  st7735.o
-    0x000008c8   0x000008c8   0x00000056   Code   RO          227    i.ST7735_DrawString  st7735.o
-    0x0000091e   0x0000091e   0x00000002   PAD
-    0x00000920   0x00000920   0x000000ac   Code   RO          228    i.ST7735_FillRect   st7735.o
-    0x000009cc   0x000009cc   0x00000024   Code   RO          229    i.ST7735_FillScreen  st7735.o
-    0x000009f0   0x000009f0   0x0000007c   Code   RO          231    i.ST7735_InitR      st7735.o
-    0x00000a6c   0x00000a6c   0x000000d4   Code   RO          233    i.ST7735_OutChar    st7735.o
-    0x00000b40   0x00000b40   0x00000018   Code   RO          234    i.ST7735_OutString  st7735.o
-    0x00000b58   0x00000b58   0x00000020   Code   RO          244    i.ST7735_SetCursor  st7735.o
-    0x00000b78   0x00000b78   0x00000054   Code   RO          101    i.SoundPlayer       sound.o
-    0x00000bcc   0x00000bcc   0x00000030   Code   RO          108    i.Sound_Init        sound.o
-    0x00000bfc   0x00000bfc   0x00000090   Code   RO          491    i.SpaceInvaders_Init  game.o
-    0x00000c8c   0x00000c8c   0x00000060   Code   RO          557    i.SysTick_Handler   systick.o
-    0x00000cec   0x00000cec   0x00000020   Code   RO          558    i.SysTick_Init      systick.o
-    0x00000d0c   0x00000d0c   0x00000018   Code   RO           59    i.Timer0A_Handler   timer0.o
-    0x00000d24   0x00000d24   0x00000060   Code   RO           60    i.Timer0_Init       timer0.o
-    0x00000d84   0x00000d84   0x00000018   Code   RO           80    i.Timer1A_Handler   timer1.o
-    0x00000d9c   0x00000d9c   0x00000056   Code   RO          248    i.commandList       st7735.o
-    0x00000df2   0x00000df2   0x00000002   PAD
-    0x00000df4   0x00000df4   0x00000188   Code   RO          249    i.commonInit        st7735.o
-    0x00000f7c   0x00000f7c   0x0000006c   Code   RO          492    i.enemyMove         game.o
-    0x00000fe8   0x00000fe8   0x0000000c   Code   RO          493    i.getPlayerX        game.o
-    0x00000ff4   0x00000ff4   0x0000002a   Code   RO          186    i.main              spaceinvaders.o
-    0x0000101e   0x0000101e   0x00000002   PAD
-    0x00001020   0x00001020   0x00000010   Code   RO          494    i.movePlayerLeft    game.o
-    0x00001030   0x00001030   0x00000010   Code   RO          495    i.movePlayerRight   game.o
-    0x00001040   0x00001040   0x00000010   Code   RO          496    i.noMove            game.o
-    0x00001050   0x00001050   0x00000012   Code   RO          254    i.pushColor         st7735.o
-    0x00001062   0x00001062   0x00000002   PAD
-    0x00001064   0x00001064   0x00000074   Code   RO          255    i.setAddrWindow     st7735.o
-    0x000010d8   0x000010d8   0x000007e2   Data   RO          257    .constdata          st7735.o
-    0x000018ba   0x000018ba   0x00000e44   Data   RO          499    .constdata          game.o
-    0x000026fe   0x000026fe   0x00000002   PAD
-    0x00002700   0x00002700   0x00000020   Data   RO          758    Region$$Table       anon$$obj.o
+    0x00000528   0x00000528   0x00000018   Code   RO          655    i.Button_Data       button.o
+    0x00000540   0x00000540   0x00000044   Code   RO          656    i.Button_Init       button.o
+    0x00000584   0x00000584   0x0000003c   Code   RO           16    i.DAC_Init          dac.o
+    0x000005c0   0x000005c0   0x0000000c   Code   RO           17    i.DAC_Out           dac.o
+    0x000005cc   0x000005cc   0x00000020   Code   RO          219    i.Delay1ms          st7735.o
+    0x000005ec   0x000005ec   0x0000004c   Code   RO          494    i.DrawScreen        game.o
+    0x00000638   0x00000638   0x0000001c   Code   RO          495    i.Hit               game.o
+    0x00000654   0x00000654   0x0000001c   Code   RO          496    i.Lose              game.o
+    0x00000670   0x00000670   0x00000010   Code   RO          222    i.Output_Init       st7735.o
+    0x00000680   0x00000680   0x0000007c   Code   RO          482    i.PLL_Init          pll.o
+    0x000006fc   0x000006fc   0x00000120   Code   RO          226    i.ST7735_DrawBitmap  st7735.o
+    0x0000081c   0x0000081c   0x000000f8   Code   RO          228    i.ST7735_DrawCharS  st7735.o
+    0x00000914   0x00000914   0x00000048   Code   RO          231    i.ST7735_DrawPixel  st7735.o
+    0x0000095c   0x0000095c   0x00000056   Code   RO          232    i.ST7735_DrawString  st7735.o
+    0x000009b2   0x000009b2   0x00000002   PAD
+    0x000009b4   0x000009b4   0x000000ac   Code   RO          233    i.ST7735_FillRect   st7735.o
+    0x00000a60   0x00000a60   0x00000024   Code   RO          234    i.ST7735_FillScreen  st7735.o
+    0x00000a84   0x00000a84   0x0000007c   Code   RO          236    i.ST7735_InitR      st7735.o
+    0x00000b00   0x00000b00   0x000000d4   Code   RO          238    i.ST7735_OutChar    st7735.o
+    0x00000bd4   0x00000bd4   0x00000018   Code   RO          239    i.ST7735_OutString  st7735.o
+    0x00000bec   0x00000bec   0x0000008c   Code   RO          240    i.ST7735_OutUDec    st7735.o
+    0x00000c78   0x00000c78   0x00000020   Code   RO          249    i.ST7735_SetCursor  st7735.o
+    0x00000c98   0x00000c98   0x00000054   Code   RO          101    i.SoundPlayer       sound.o
+    0x00000cec   0x00000cec   0x00000030   Code   RO          108    i.Sound_Init        sound.o
+    0x00000d1c   0x00000d1c   0x00000028   Code   RO          110    i.Sound_Play        sound.o
+    0x00000d44   0x00000d44   0x00000014   Code   RO          111    i.Sound_Shoot       sound.o
+    0x00000d58   0x00000d58   0x000000a8   Code   RO          497    i.SpaceInvaders_Init  game.o
+    0x00000e00   0x00000e00   0x0000009c   Code   RO          634    i.SysTick_Handler   systick.o
+    0x00000e9c   0x00000e9c   0x00000020   Code   RO          635    i.SysTick_Init      systick.o
+    0x00000ebc   0x00000ebc   0x00000018   Code   RO           59    i.Timer0A_Handler   timer0.o
+    0x00000ed4   0x00000ed4   0x00000060   Code   RO           60    i.Timer0_Init       timer0.o
+    0x00000f34   0x00000f34   0x00000018   Code   RO           80    i.Timer1A_Handler   timer1.o
+    0x00000f4c   0x00000f4c   0x0000001c   Code   RO          498    i.Win               game.o
+    0x00000f68   0x00000f68   0x0000002c   Code   RO          499    i.checkEnd          game.o
+    0x00000f94   0x00000f94   0x00000056   Code   RO          253    i.commandList       st7735.o
+    0x00000fea   0x00000fea   0x00000002   PAD
+    0x00000fec   0x00000fec   0x00000188   Code   RO          254    i.commonInit        st7735.o
+    0x00001174   0x00001174   0x0000002c   Code   RO          500    i.drawLaser         game.o
+    0x000011a0   0x000011a0   0x0000002c   Code   RO          501    i.drawScore         game.o
+    0x000011cc   0x000011cc   0x0000006c   Code   RO          502    i.enemyMove         game.o
+    0x00001238   0x00001238   0x00000048   Code   RO          257    i.fillmessage       st7735.o
+    0x00001280   0x00001280   0x0000000c   Code   RO          503    i.getEnemyX         game.o
+    0x0000128c   0x0000128c   0x0000000c   Code   RO          504    i.getEnemyY         game.o
+    0x00001298   0x00001298   0x0000000c   Code   RO          505    i.getLaser          game.o
+    0x000012a4   0x000012a4   0x0000000c   Code   RO          506    i.getLaserX         game.o
+    0x000012b0   0x000012b0   0x0000000c   Code   RO          507    i.getLaserY         game.o
+    0x000012bc   0x000012bc   0x0000000c   Code   RO          508    i.getPlayerX        game.o
+    0x000012c8   0x000012c8   0x00000068   Code   RO          509    i.hitDetect         game.o
+    0x00001330   0x00001330   0x0000002c   Code   RO          510    i.laserInit         game.o
+    0x0000135c   0x0000135c   0x0000006c   Code   RO          186    i.main              spaceinvaders.o
+    0x000013c8   0x000013c8   0x0000001c   Code   RO          511    i.moveLaser         game.o
+    0x000013e4   0x000013e4   0x00000010   Code   RO          512    i.movePlayerLeft    game.o
+    0x000013f4   0x000013f4   0x00000010   Code   RO          513    i.movePlayerRight   game.o
+    0x00001404   0x00001404   0x00000010   Code   RO          514    i.noMove            game.o
+    0x00001414   0x00001414   0x00000012   Code   RO          259    i.pushColor         st7735.o
+    0x00001426   0x00001426   0x00000002   PAD
+    0x00001428   0x00001428   0x00000074   Code   RO          260    i.setAddrWindow     st7735.o
+    0x0000149c   0x0000149c   0x00003c4b   Data   RO          112    .constdata          sound.o
+    0x000050e7   0x000050e7   0x000007e2   Data   RO          262    .constdata          st7735.o
+    0x000058c9   0x000058c9   0x00000001   PAD
+    0x000058ca   0x000058ca   0x00000e44   Data   RO          516    .constdata          game.o
+    0x0000670e   0x0000670e   0x00000002   PAD
+    0x00006710   0x00006710   0x00000020   Data   RO          835    Region$$Table       anon$$obj.o
 
 
-    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x00002720, Size: 0x00000058, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x00006730, Size: 0x00000080, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x00002720   0x00000004   Data   RW           61    .data               timer0.o
-    0x20000004   0x00002724   0x00000004   Data   RW           82    .data               timer1.o
-    0x20000008   0x00002728   0x00000010   Data   RW          113    .data               sound.o
-    0x20000018   0x00002738   0x0000002c   Data   RW          258    .data               st7735.o
-    0x20000044   0x00002764   0x0000000c   Data   RW          500    .data               game.o
-    0x20000050   0x00002770   0x00000008   Data   RW          559    .data               systick.o
+    0x20000000   0x00006730   0x00000004   Data   RW           61    .data               timer0.o
+    0x20000004   0x00006734   0x00000004   Data   RW           82    .data               timer1.o
+    0x20000008   0x00006738   0x00000010   Data   RW          113    .data               sound.o
+    0x20000018   0x00006748   0x0000002c   Data   RW          263    .data               st7735.o
+    0x20000044   0x00006774   0x00000024   Data   RW          517    .data               game.o
+    0x20000068   0x00006798   0x00000014   Data   RW          636    .data               systick.o
+    0x2000007c   0x000067ac   0x00000004   Data   RW          657    .data               button.o
 
 
-    Execution Region ER_ZI (Exec base: 0x20000058, Load base: 0x00002778, Size: 0x00000480, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_ZI (Exec base: 0x20000080, Load base: 0x000067b0, Size: 0x00000498, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000058        -       0x0000001c   Zero   RW          498    .bss                game.o
-    0x20000074        -       0x00000060   Zero   RW          632    .bss                c_w.l(libspace.o)
-    0x200000d4   0x00002778   0x00000004   PAD
-    0x200000d8        -       0x00000000   Zero   RW            2    HEAP                startup.o
-    0x200000d8        -       0x00000400   Zero   RW            1    STACK               startup.o
+    0x20000080        -       0x0000000c   Zero   RW          261    .bss                st7735.o
+    0x2000008c        -       0x0000002c   Zero   RW          515    .bss                game.o
+    0x200000b8        -       0x00000060   Zero   RW          709    .bss                c_w.l(libspace.o)
+    0x20000118        -       0x00000000   Zero   RW            2    HEAP                startup.o
+    0x20000118        -       0x00000400   Zero   RW            1    STACK               startup.o
 
 
 ==============================================================================
@@ -946,22 +1065,23 @@ Image component sizes
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
        272         32          0          0          0        916   adc.o
+        92         26          0          4          0       1027   button.o
         72         20          0          0          0       5345   dac.o
-       388         64       3652         12         28       4853   game.o
+       864        162       3652         36         44      11064   game.o
         76         12          0          0          0        244   lcd.o
        124          4          0          0          0        451   pll.o
-       132         32          0         16          0       1973   sound.o
-        42          0          0          0          0       1031   spaceinvaders.o
-      1954        184       2018         44          0      13176   st7735.o
+       192         56      15435         16          0       2844   sound.o
+       108          0          0          0          0       1071   spaceinvaders.o
+      2166        214       2018         44         12      14155   st7735.o
        692        632          0          0       1024        988   startup.o
-       128         10          0          8          0       1106   systick.o
+       188         14          0         20          0       1402   systick.o
        120         30          0          4          0       1432   timer0.o
         24          8          0          4          0        934   timer1.o
 
     ----------------------------------------------------------------------
-      4032       1028       5704         88       1052      32449   Object Totals
+      4996       1210      21140        128       1080      41873   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-         8          0          2          0          0          0   (incl. Padding)
+         6          0          3          0          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -989,8 +1109,8 @@ Image component sizes
          2          0          0          0          0         68   use_no_semi.o
 
     ----------------------------------------------------------------------
-       280         16          0          0        100        584   Library Totals
-         8          0          0          0          4          0   (incl. Padding)
+       280         16          0          0         96        584   Library Totals
+         8          0          0          0          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -999,7 +1119,7 @@ Image component sizes
        272         16          0          0         96        584   c_w.l
 
     ----------------------------------------------------------------------
-       280         16          0          0        100        584   Library Totals
+       280         16          0          0         96        584   Library Totals
 
     ----------------------------------------------------------------------
 
@@ -1008,15 +1128,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      4312       1044       5704         88       1152      31261   Grand Totals
-      4312       1044       5704         88       1152      31261   ELF Image Totals
-      4312       1044       5704         88          0          0   ROM Totals
+      5276       1226      21140        128       1176      39645   Grand Totals
+      5276       1226      21140        128       1176      39645   ELF Image Totals
+      5276       1226      21140        128          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                10016 (   9.78kB)
-    Total RW  Size (RW Data + ZI Data)              1240 (   1.21kB)
-    Total ROM Size (Code + RO Data + RW Data)      10104 (   9.87kB)
+    Total RO  Size (Code + RO Data)                26416 (  25.80kB)
+    Total RW  Size (RW Data + ZI Data)              1304 (   1.27kB)
+    Total ROM Size (Code + RO Data + RW Data)      26544 (  25.92kB)
 
 ==============================================================================
 

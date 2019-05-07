@@ -3,9 +3,9 @@
 void Button_Init(){
 	volatile int delay;
 	SYSCTL_RCGCGPIO_R |= 0x10;
-	delay++;
-	GPIO_PORTE_DIR_R &= 0x0;
-	GPIO_PORTE_DEN_R |= 0x3;
+	while((SYSCTL_PRGPIO_R&0x10)==0){}
+	GPIO_PORTE_DIR_R &= 0x03;
+	GPIO_PORTE_DEN_R |= 0x03;
 }
 uint32_t data;
 
